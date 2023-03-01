@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .para{
+        background: linear-gradient(135deg,#2F3C7E,#FBEAEB);
+      border: 3px solid black;
+      margin: 50px;
+      text-align: center;
+/*      
+      /* width: 800px; */
+      height: 100vh; 
+      overflow: auto;
+      padding: 30px;
+      /* margin-left:150px; */
+      font-size: 25px;
+      
+      
+      }
+ 
+
+
+
+      
+
+
+    </style>
+</head>
+<body>
+ 
+    <div class="para" id="demo"></div>
+   
+
+ 
+    <script>
+     var second=JSON.parse( sessionStorage.getItem("first"));
+        const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  
+ var one = JSON.parse(this.responseText);
+  
+  let txt="";
+  for(var x in one){
+    txt +=
+  
+      
+    "<div class=para1>"+
+     
+      
+       one[x]+
+      
+      "<br>"+"<br>"+
+      "<img src="+one[x]+">"+
+      "</div>";
+
+
+
+ 
+    document.getElementById('demo').innerHTML= txt;
+  }
+ 
+
+}
+
+
+xmlhttp.open("GET", "https://dummyjson.com/products/"+second);
+xmlhttp.send();
+</script>
+   
+</script>
+    
+</body>
+</html>

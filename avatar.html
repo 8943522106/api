@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+
+.container {
+  position: relative;
+  width: 50%;
+  max-width: 300px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+
+<div class=container>
+<div class="align" id="dis2"></div>
+  <img class="image">
+  <div class="overlay">
+ 
+  <h1 class="head1">USERS</h1>
+  <p id="demo">
+</div>
+</div>
+   
+  </p>
+</div>
+
+<script>
+    
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  let output = "";
+  for (let i = 0; i < myObj.data.length; i++) {
+  
+    output += "<div class=container>"+"<p class="+"arrange>"+
+       "<img class="+"image"+" src =" + myObj.data[i].avatar +">"
+        +"<br>"+ "<div class=overlay>"+myObj.data[i].first_name 
+        +myObj.data[i].last_name+"<br>"
+        + myObj.data[i].email;
+        
+        "</p>"+
+        "</div>"+
+        "</div>";
+      
+    document.getElementById("dis2").innerHTML = output;
+
+}
+}
+xmlhttp.open("GET", "https://reqres.in/api/users?page=1");
+xmlhttp.send();
+    
+</script>
+
+</body>
+</html>
